@@ -11,7 +11,7 @@ services:
 # before_install 스크립트를 실행 (이미지 만들기)
 before_install:
   - echo "start creating an image with dockerfile"
-  - docker build -t conradmaker/react-prac -f Dockerfile.dev
+  - docker build -t conradmaker/react-prac -f Dockerfile.dev ./
 
 # script 실행할 스크립트 (테스트)
 script:
