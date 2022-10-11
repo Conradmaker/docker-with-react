@@ -18,5 +18,17 @@ script:
   - docker run -e CI=true conradmaker/react-prac yarn test -- --coverage
 
 # after_success 테스트 성공후 진행할 일
-after_success:
-  - echo "test success!"
+# after_success:
+#   - echo "test success!"
+deploy:
+  provider: elasticbeanstlak
+  region: "ap-northeast-2"
+  app: "docker-react-app"
+  env: "Dockerreactapp-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-840838586021"
+  bucket_path: "docker-react-app"
+  on:
+    branch: master
+
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
