@@ -1,0 +1,22 @@
+#관리자 권한
+sudo: required
+
+#언어(플랫폼)
+language: generic
+
+# services 도커환경구성
+services:
+  - docker
+
+# before_install 스크립트를 실행 (이미지 만들기)
+before_install:
+  - echo "start creating an image with dockerfile"
+  - docker build -t conradmaker/react-prac -f Dockerfile.dev
+
+# script 실행할 스크립트 (테스트)
+script:
+  - docker run -e CI=true conradmaker/react-prac yarn test -- --coverage
+
+# after_success 테스트 성공후 진행할 일
+after_success:
+  - echo "test success"
