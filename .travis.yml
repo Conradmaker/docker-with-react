@@ -19,4 +19,4 @@ script:
 
 # after_success 테스트 성공후 진행할 일
 after_success:
-  - echo "test success"
+  - echo "test success!"
